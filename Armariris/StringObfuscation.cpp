@@ -182,7 +182,7 @@ namespace llvm {
                                 Value *GEP=builder.CreateGEP(gvar,ArrayRef<Value*>(indexList, 2),"arrayIdx");
                                 LoadInst *loadElement=builder.CreateLoad(GEP,false);
 #if LLVM_VERSION_MAJOR >= 10
-                                loadElement->setAlignment(MaybeAlign(1));
+                                loadElement->setAlignment(Align(1));
 #else
                                 loadElement->setAlignment(1);
 #endif
@@ -192,7 +192,7 @@ namespace llvm {
                                 Value *Xor = builder.CreateXor(loadElement,const_key,"xor");
                                 StoreInst *Store = builder.CreateStore(Xor, GEP,false);
 #if LLVM_VERSION_MAJOR >= 10
-                                Store->setAlignment(MaybeAlign(1));
+                                Store->setAlignment(Align(1));
 #else
                                 Store->setAlignment(1);
 #endif

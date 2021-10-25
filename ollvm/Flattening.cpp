@@ -131,7 +131,7 @@ bool Flattening::flatten(Function *f) {
   loopEntry = BasicBlock::Create(f->getContext(), "loopEntry", f, insert);
   loopEnd = BasicBlock::Create(f->getContext(), "loopEnd", f, insert);
 
-  load = new LoadInst(switchVar, "switchVar", loopEntry);
+  load = new LoadInst(Type::getInt32Ty(f->getContext()), switchVar, "switchVar", loopEntry);
 
   // Move first BB on top
   insert->moveBefore(loopEntry);

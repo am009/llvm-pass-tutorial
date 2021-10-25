@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.4)
 project(llvm-pass-tutorial)
 
+# export CXX=/usr/bin/clang++-12
+# export CC=/usr/bin/clang-12
+set(ENV{LLVM_HOME} /usr/lib/llvm-12/)
+
 # we need LLVM_HOME in order not automatically set LLVM_DIR
 if(NOT DEFINED ENV{LLVM_HOME})
     message(FATAL_ERROR "$LLVM_HOME is not defined")
@@ -18,5 +22,5 @@ endif ()
 
 add_subdirectory(skeleton)  # Use your pass name here.
 add_subdirectory(ollvm)  # ollvm
-add_subdirectory(Hikari)  # Hikari
+# add_subdirectory(Hikari)  # Hikari
 add_subdirectory(Armariris)  # Armariris

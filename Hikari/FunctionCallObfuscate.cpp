@@ -19,7 +19,7 @@
 
 #include "json.hpp"
 #include "llvm/ADT/Triple.h"
-#include "llvm/IR/CallSite.h"
+// #include "llvm/IR/CallSite.h"
 #include "llvm/IR/Constants.h"
 #include "llvm/IR/IRBuilder.h"
 #include "llvm/IR/Instructions.h"
@@ -245,7 +245,7 @@ struct FunctionCallObfuscate : public FunctionPass {
       for (auto I = BB.getFirstInsertionPt(), end = BB.end(); I != end; ++I) {
         Instruction &Inst = *I;
         if (isa<CallInst>(&Inst) || isa<InvokeInst>(&Inst)) {
-          CallSite CS(&Inst);
+          CallBase CS(&Inst);
           Function *calledFunction = CS.getCalledFunction();
           if (calledFunction == NULL) {
             /*
