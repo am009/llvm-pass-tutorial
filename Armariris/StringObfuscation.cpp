@@ -30,7 +30,7 @@ namespace llvm {
                 public:
                 static char ID; // pass identification
                 bool is_flag = false;
-                StringObfuscationPass() : ModulePass(ID) {}
+                StringObfuscationPass() : ModulePass(ID) { is_flag = true; }
                 StringObfuscationPass(bool flag) : ModulePass(ID)
                 {
                     is_flag = flag;

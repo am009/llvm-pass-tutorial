@@ -43,12 +43,15 @@ Pass *llvm::createFlattening(bool flag) { return new Flattening(flag); }
 bool Flattening::runOnFunction(Function &F) {
   Function *tmp = &F;
   // Do we obfuscate
-  if (toObfuscate(flag, tmp, "fla")) {
-    if (flatten(tmp)) {
-      ++Flattened;
-    }
-  }
+  // if (toObfuscate(flag, tmp, "fla")) {
+  //   if (flatten(tmp)) {
+  //     ++Flattened;
+  //   }
+  // }
 
+  if (flatten(tmp)) {
+    ++Flattened;
+  }
   return false;
 }
 
